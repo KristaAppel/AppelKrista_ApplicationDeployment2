@@ -6,6 +6,7 @@ package com.kristaappel.powerwordsreader.fragments;
 
 import android.app.ListFragment;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,28 +17,29 @@ import com.kristaappel.powerwordsreader.R;
 
 public class ListFrag extends ListFragment {
 
-    public static final int ID_CONSTANT = 0x01010;
-    String[] level_names;
-    String[] level_abbrevs;
+    private static final int ID_CONSTANT = 0x01010;
+    private String[] level_names;
+    private String[] level_abbrevs;
 
 
     public static ListFrag newInstance(){
         return new ListFrag();
     }
 
-
+    
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
 
         level_names = getResources().getStringArray(R.array.irla_levels);
         level_abbrevs = getResources().getStringArray(R.array.irla_levels_abbrev);
-
+        Log.i("ListFrag", "length: " + getResources().getStringArray(R.array.power_words_2r).length);
+        Log.i("ListFrag", "" + getResources().getStringArray(R.array.power_words_2r)[10]);
         setListAdapter(new ListAdapter());
     }
 
 
-    public class ListAdapter extends BaseAdapter{
+    private class ListAdapter extends BaseAdapter{
 
         @Override
         public int getCount() {
@@ -66,6 +68,7 @@ public class ListFrag extends ListFragment {
             TextView textAbbrev = (TextView) convertView.findViewById(R.id.textview_list_item_colored_square);
             TextView textTitle = (TextView) convertView.findViewById(R.id.textView_list_item_title);
 
+            // Set the proper background color for each level:
             switch (position){
                 case 0:case 1:
                     textAbbrev.setBackgroundColor(getResources().getColor(R.color.myGreen));
@@ -78,10 +81,10 @@ public class ListFrag extends ListFragment {
                     break;
             }
 
-
-
+            // Set text:
             textAbbrev.setText(level_abbrevs[position]);
             textTitle.setText(level_names[position]);
+
             return convertView;
         }
 
