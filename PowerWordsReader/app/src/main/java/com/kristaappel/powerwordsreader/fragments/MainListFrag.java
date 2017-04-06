@@ -1,41 +1,56 @@
 // Krista Appel
 // Application Deployment 2: Android
-// ListFrag.java
+// MainListFrag.java
 
 package com.kristaappel.powerwordsreader.fragments;
 
 import android.app.ListFragment;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.kristaappel.powerwordsreader.PowerWordActivity;
 import com.kristaappel.powerwordsreader.R;
 
 
-public class ListFrag extends ListFragment {
+public class MainListFrag extends ListFragment {
 
     private static final int ID_CONSTANT = 0x01010;
+    public static final String EXTRA_IRLA_LEVEL_INDEX = "EXTRA_IRLA_LEVEL_INDEX";
     private String[] level_names;
     private String[] level_abbrevs;
 
 
-    public static ListFrag newInstance(){
-        return new ListFrag();
+    public static MainListFrag newInstance(){
+        return new MainListFrag();
     }
 
-    
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
 
         level_names = getResources().getStringArray(R.array.irla_levels);
         level_abbrevs = getResources().getStringArray(R.array.irla_levels_abbrev);
-        Log.i("ListFrag", "length: " + getResources().getStringArray(R.array.power_words_2r).length);
-        Log.i("ListFrag", "" + getResources().getStringArray(R.array.power_words_2r)[10]);
+        Log.i("MainListFrag", "length: " + getResources().getStringArray(R.array.power_words_2r).length);
+        Log.i("MainListFrag", "" + getResources().getStringArray(R.array.power_words_2r)[10]);
         setListAdapter(new ListAdapter());
+    }
+
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+        Intent powerWordScreenIntent = new Intent(getActivity(), PowerWordActivity.class);
+        powerWordScreenIntent.putExtra(EXTRA_IRLA_LEVEL_INDEX, position);
+        startActivity(powerWordScreenIntent);
     }
 
 
@@ -71,13 +86,13 @@ public class ListFrag extends ListFragment {
             // Set the proper background color for each level:
             switch (position){
                 case 0:case 1:
-                    textAbbrev.setBackgroundColor(getResources().getColor(R.color.myGreen));
+                    textAbbrev.setBackgroundResource(R.color.myGreen);
                     break;
                 case 2:case 3:
-                    textAbbrev.setBackgroundColor(getResources().getColor(R.color.myBlue));
+                    textAbbrev.setBackgroundResource(R.color.myBlue);
                     break;
                 case 4:case 5:
-                    textAbbrev.setBackgroundColor(getResources().getColor(R.color.myRed));
+                    textAbbrev.setBackgroundResource(R.color.myRed);
                     break;
             }
 
