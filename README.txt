@@ -9,3 +9,5 @@ Instructions:
 This application uses Voice Recognition and Text to Speech.
 Please make sure your volume is turned on and your microphone is enabled.
 
+Requirements:
+This application requires a minimum of SDK version of API 21, with a target SDK version of API 25.
