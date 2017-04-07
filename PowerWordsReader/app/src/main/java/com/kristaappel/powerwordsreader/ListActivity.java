@@ -30,7 +30,7 @@ public class ListActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_list_screen, menu);
         return true;
     }
-
+    
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -41,5 +41,5 @@ public class ListActivity extends AppCompatActivity {
         return true;
     }
 
-    
+
 }

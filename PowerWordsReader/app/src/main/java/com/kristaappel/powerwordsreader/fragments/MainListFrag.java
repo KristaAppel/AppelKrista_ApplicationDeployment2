@@ -38,8 +38,6 @@ public class MainListFrag extends ListFragment {
 
         level_names = getResources().getStringArray(R.array.irla_levels);
         level_abbrevs = getResources().getStringArray(R.array.irla_levels_abbrev);
-        Log.i("MainListFrag", "length: " + getResources().getStringArray(R.array.power_words_2r).length);
-        Log.i("MainListFrag", "" + getResources().getStringArray(R.array.power_words_2r)[10]);
         setListAdapter(new ListAdapter());
     }
 
