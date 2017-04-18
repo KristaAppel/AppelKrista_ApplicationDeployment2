@@ -7,7 +7,6 @@ package com.kristaappel.powerwordsreader.fragments;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
