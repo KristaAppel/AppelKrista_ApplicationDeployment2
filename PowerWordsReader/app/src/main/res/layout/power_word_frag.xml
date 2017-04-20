@@ -4,40 +4,50 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageButton
+        android:id="@+id/previousButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/nextButton"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/arrow1"
+        app:srcCompat="@drawable/arrow1"
+        android:contentDescription="@string/previous_button" />
+
     <TextView
         android:id="@+id/textView_power_word"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="119dp"
-        android:text="comfortable"
+        android:layout_marginTop="46dp"
+        android:text="@string/comfortable"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="48sp" />
+        android:textSize="48sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
-        android:id="@+id/arrowButton"
-        android:layout_width="140dp"
-        android:layout_height="100dp"
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="28dp"
         android:layout_marginEnd="12dp"
         android:background="@drawable/arrow2"
-        app:srcCompat="@drawable/arrow2" />
+        app:srcCompat="@drawable/arrow2"
+        android:contentDescription="@string/next_button" />
 
     <ImageButton
         android:id="@+id/helpButton"
         android:layout_width="@android:dimen/notification_large_icon_width"
         android:layout_height="@android:dimen/notification_large_icon_height"
-        android:layout_alignBottom="@+id/arrowButton"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="17dp"
-        android:layout_marginStart="12dp"
         android:background="@drawable/round_button_shape"
         android:backgroundTint="@color/myRed"
-        app:srcCompat="@android:drawable/ic_menu_help" />
+        app:srcCompat="@android:drawable/ic_menu_help"
+        android:layout_above="@+id/nextButton"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/help_button" />
 
     <ImageButton
         android:id="@+id/micButton"
@@ -48,5 +58,6 @@
         android:layout_marginTop="42dp"
         android:background="@drawable/round_button_shape"
         android:backgroundTint="@color/myBlue"
-        app:srcCompat="@mipmap/ic_mic_white_24dp" />
+        app:srcCompat="@mipmap/ic_mic_white_24dp"
+        android:contentDescription="@string/microphone_button" />
 </RelativeLayout>
