@@ -18,8 +18,8 @@
         </activity>
         <activity
             android:name=".ProgressLogActivity"
-            android:label="Progress Log"></activity>
-        <activity android:name=".PowerWordActivity"></activity>
+            android:label="Progress Log" />
+        <activity android:name=".PowerWordActivity" />
     </application>
 
 </manifest>

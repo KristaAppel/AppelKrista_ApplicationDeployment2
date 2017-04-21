@@ -7,7 +7,6 @@ package com.kristaappel.powerwordsreader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.kristaappel.powerwordsreader.fragments.MainListFrag;
 import com.kristaappel.powerwordsreader.fragments.PowerWordFrag;
@@ -15,8 +14,7 @@ import com.kristaappel.powerwordsreader.fragments.PowerWordFrag;
 
 public class PowerWordActivity extends AppCompatActivity {
 
-    String irlaLevel;
-    String[] powerWords;
+    private String[] powerWords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +24,7 @@ public class PowerWordActivity extends AppCompatActivity {
         int levelIndex = getIntent().getIntExtra(MainListFrag.EXTRA_IRLA_LEVEL_INDEX, 0);
         // This index tells us the index of the irla levels collection that was selected
         // Use the index to get the name of the IRLA Level:
-        irlaLevel = getResources().getStringArray(R.array.irla_levels)[levelIndex];
+        String irlaLevel = getResources().getStringArray(R.array.irla_levels)[levelIndex];
 
         // Set activity label :
         setTitle(irlaLevel);

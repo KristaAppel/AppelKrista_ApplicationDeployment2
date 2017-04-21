@@ -8,7 +8,6 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.media.Image;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
@@ -21,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kristaappel.powerwordsreader.HomophoneChecker;
 import com.kristaappel.powerwordsreader.R;
 
 import java.util.ArrayList;
@@ -32,17 +32,12 @@ import static android.app.Activity.RESULT_OK;
 
 public class PowerWordFrag extends Fragment implements View.OnClickListener {
 
-    TextView textView_powerWord;
-    ImageButton nextButton;
-    ImageButton helpButton;
-    ImageButton micButton;
-    ImageButton previousButton;
-    static String[] powerWords;
-    int wordIndex = 0;
+    private TextView textView_powerWord;
+    private ImageButton micButton;
+    private static String[] powerWords;
+    private int wordIndex = 0;
     private static final int REQUEST_CODE = 10101;
     private TextToSpeech textToSpeech;
-    String correct = "Correct!";
-    String incorrect = "Try again!";
 
 
     public static PowerWordFrag newInstance(String[] _powerWords){
@@ -69,7 +64,7 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
             }
         });
     }
-    
+
 
     @SuppressWarnings("ConstantConditions")
     @Override
@@ -79,13 +74,13 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
             textView_powerWord = (TextView) getView().findViewById(R.id.textView_power_word);
             textView_powerWord.setText(powerWords[wordIndex]);
 
-            nextButton = (ImageButton) getView().findViewById(R.id.nextButton);
+            ImageButton nextButton = (ImageButton) getView().findViewById(R.id.nextButton);
             nextButton.setOnClickListener(this);
 
-            previousButton = (ImageButton) getView().findViewById(R.id.previousButton);
+            ImageButton previousButton = (ImageButton) getView().findViewById(R.id.previousButton);
             previousButton.setOnClickListener(this);
 
-            helpButton = (ImageButton) getView().findViewById(R.id.helpButton);
+            ImageButton helpButton = (ImageButton) getView().findViewById(R.id.helpButton);
             helpButton.setOnClickListener(this);
 
             micButton = (ImageButton) getView().findViewById(R.id.micButton);
@@ -153,19 +148,22 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
             ArrayList<String> resultsList = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             String result = String.valueOf(resultsList.get(0));
 
-            resultsList = checkForHomophones(result, resultsList);
+            resultsList = HomophoneChecker.checkForHomophones(result, resultsList);
 
             Log.i("PowerWordFrag", "result:" + result);
             Log.i("PowerWordFrag", "resultList: " + resultsList);
-            if (resultsList.contains(textView_powerWord.getText())){
+            if (resultsList.contains(textView_powerWord.getText().toString())){
+                String correct = "Correct!";
                 textToSpeech.speak(correct, TextToSpeech.QUEUE_FLUSH, null, null);
             }else{
+                String incorrect = "Try again!";
                 textToSpeech.speak(incorrect, TextToSpeech.QUEUE_FLUSH, null, null);
             }
         }
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+
 
     @Override
     public void onStop() {
@@ -175,229 +173,5 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
         super.onStop();
     }
 
-
-    private ArrayList<String> checkForHomophones(String result, ArrayList<String> resultsList){
-        // Speech recognition is a little buggy.  These will help:
-        switch (result){
-            case "B":
-                resultsList.add("be");
-                break;
-            case "m": case "AM":
-                resultsList.add("am");
-                break;
-            case "Anne":
-                resultsList.add("an");
-                break;
-            case "4":
-                resultsList.add("for");
-                break;
-            case "1":
-                resultsList.add("one");
-                break;
-            case "C":
-                resultsList.add("see");
-                break;
-            case "their":
-                resultsList.add("there");
-                resultsList.add("they're");
-                break;
-            case "cant":
-                resultsList.add("can't");
-                break;
-            case "c**":
-                resultsList.add("come");
-                break;
-            case "no":
-                resultsList.add("know");
-                break;
-            case "He":
-                resultsList.add("he");
-                break;
-            case "I":
-                resultsList.add("eye");
-                break;
-            case "two":
-                resultsList.add("to");
-                resultsList.add("too");
-                break;
-            case "bye":
-                resultsList.add("by");
-                resultsList.add("buy");
-                break;
-            case "sent":
-                resultsList.add("cent");
-                break;
-            case "hi":
-                resultsList.add("high");
-                break;
-            case "Ben":
-                resultsList.add("been");
-                break;
-            case "bored":
-                resultsList.add("board");
-                break;
-            case "City":
-                resultsList.add("city");
-                break;
-            case "close":
-                resultsList.add("clothes");
-                break;
-            case "Giant":
-                resultsList.add("giant");
-                break;
-            case "Library":
-                resultsList.add("library");
-                break;
-            case "Magic":
-                resultsList.add("magic");
-                break;
-            case "Moon":
-                resultsList.add("moon");
-                break;
-            case "Mountain":
-                resultsList.add("mountain");
-                break;
-            case "mr.":
-                resultsList.add("Mr.");
-                break;
-            case "Secret":
-                resultsList.add("secret");
-                break;
-            case "Sal":case "shell":
-                resultsList.add("shall");
-                break;
-            case "stud":
-                resultsList.add("stood");
-                break;
-            case "Wild":
-                resultsList.add("wild");
-                break;
-            case "Beauty":
-                resultsList.add("beauty");
-                break;
-            case "Bowl":
-                resultsList.add("bowl");
-                break;
-            case "come":case "call":
-                resultsList.add("calm");
-                resultsList.add("comb");
-                break;
-            case "Danger":
-                resultsList.add("danger");
-                break;
-            case "Escape":
-                resultsList.add("escape");
-                break;
-            case "Island":
-                resultsList.add("island");
-                break;
-            case "mint":
-                resultsList.add("meant");
-                break;
-            case "Pleasant":
-                resultsList.add("pleasant");
-                break;
-            case "too":
-                resultsList.add("to");
-                resultsList.add("two");
-                break;
-            case "Wii":
-                resultsList.add("we");
-                break;
-            case "pool":
-                resultsList.add("pull");
-                break;
-            case "School":
-                resultsList.add("school");
-                break;
-            case "there":
-                resultsList.add("their");
-                resultsList.add("they're");
-                break;
-            case "Wok":
-                resultsList.add("walk");
-                break;
-            case "who's":
-                resultsList.add("whose");
-                break;
-            case "right":
-                resultsList.add("write");
-                break;
-            case "Carrie":
-                resultsList.add("carry");
-                break;
-            case "Earth":
-                resultsList.add("earth");
-                break;
-            case "sore":
-                resultsList.add("sure");
-                break;
-            case "Young":
-                resultsList.add("young");
-                break;
-            case "y":
-                resultsList.add("why");
-                break;
-            case "Boy":
-                resultsList.add("boy");
-                break;
-            case "butt":
-                resultsList.add("but");
-                break;
-            case "buy":
-                resultsList.add("by");
-                resultsList.add("bye");
-                break;
-            case "by":
-                resultsList.add("bye");
-                resultsList.add("buy");
-                break;
-            case "wood":
-                resultsList.add("would");
-                break;
-            case "your":
-                resultsList.add("you're");
-                break;
-            case "doctor":
-                resultsList.add("Dr.");
-                break;
-            case "our":
-                resultsList.add("hour");
-                resultsList.add("are");
-                break;
-            case "aight":
-                resultsList.add("I");
-                resultsList.add("eye");
-                break;
-            case "Inn":
-                resultsList.add("in");
-                break;
-            case "Of":
-                resultsList.add("of");
-                break;
-            case "new":
-                resultsList.add("knew");
-                break;
-            case "mister":
-                resultsList.add("Mr.");
-                break;
-            case "mrs.":
-                resultsList.add("Mrs.");
-                break;
-            case "Miss":
-                resultsList.add("Ms.");
-                break;
-            case "o clock":
-                resultsList.add("o'clock");
-                break;
-            case "peace":
-                resultsList.add("piece");
-                break;
-            case "way":
-                resultsList.add("weigh");
-                break;
-        }
-        return resultsList;
-    }
 
 }
