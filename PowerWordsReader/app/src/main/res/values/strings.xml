@@ -6,6 +6,10 @@
     <string name="help_button">help button</string>
     <string name="next_button">next button</string>
     <string name="previous_button">previous button</string>
+    <string name="try_again">Try again!</string>
+    <string name="correct">Correct!</string>
+    <string name="listening">Listening...</string>
+    <string name="voice_recognition_not_available">Voice Recognition Not Available</string>
 
     <string-array name="irla_levels">
         <item>1G Power Words</item>

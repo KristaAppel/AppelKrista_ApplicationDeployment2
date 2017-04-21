@@ -128,11 +128,11 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
                 List<ResolveInfo> activities = packageManager.queryIntentActivities(new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH), 0);
                 if (activities.size() == 0){
                     micButton.setEnabled(false);
-                    Toast.makeText(getActivity(), "Voice Recognition Not Available", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.voice_recognition_not_available, Toast.LENGTH_SHORT).show();
                 }else{
                     Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                     intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getClass().getPackage().getName());
-                    intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Listening...");
+                    intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getString(R.string.listening));
                     intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
                     intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1);
                     startActivityForResult(intent, REQUEST_CODE);
@@ -153,10 +153,10 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
             Log.i("PowerWordFrag", "result:" + result);
             Log.i("PowerWordFrag", "resultList: " + resultsList);
             if (resultsList.contains(textView_powerWord.getText().toString())){
-                String correct = "Correct!";
+                String correct = getString(R.string.correct);
                 textToSpeech.speak(correct, TextToSpeech.QUEUE_FLUSH, null, null);
             }else{
-                String incorrect = "Try again!";
+                String incorrect = getString(R.string.try_again);
                 textToSpeech.speak(incorrect, TextToSpeech.QUEUE_FLUSH, null, null);
             }
         }
