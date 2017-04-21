@@ -47,6 +47,9 @@ public class HomophoneChecker {
                 resultsList.add("to");
                 resultsList.add("too");
                 break;
+            case "chews":
+                resultsList.add("choose");
+                break;
             case "bye":
                 resultsList.add("by");
                 resultsList.add("buy");
