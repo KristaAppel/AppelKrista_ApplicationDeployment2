@@ -2,7 +2,7 @@
 // Application Deployment 2: Android
 // HomophoneChecker.java
 
-package com.kristaappel.powerwordsreader;
+package com.kristaappel.powerwordsreader.objects;
 
 import java.util.ArrayList;
 
@@ -78,6 +78,9 @@ public class HomophoneChecker {
                 break;
             case "hi":
                 resultsList.add("high");
+                break;
+            case "whined":
+                resultsList.add("wind");
                 break;
             case "Ben":
                 resultsList.add("been");

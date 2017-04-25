@@ -20,10 +20,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kristaappel.powerwordsreader.HomophoneChecker;
+import com.kristaappel.powerwordsreader.objects.HomophoneChecker;
 import com.kristaappel.powerwordsreader.R;
+import com.kristaappel.powerwordsreader.objects.FileUtil;
+import com.kristaappel.powerwordsreader.objects.Score;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -38,6 +42,8 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
     private int wordIndex = 0;
     private static final int REQUEST_CODE = 10101;
     private TextToSpeech textToSpeech;
+    int numberOfAttempts = 0;
+    int numberCorrect = 0;
 
 
     public static PowerWordFrag newInstance(String[] _powerWords){
@@ -152,7 +158,12 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
 
             Log.i("PowerWordFrag", "result:" + result);
             Log.i("PowerWordFrag", "resultList: " + resultsList);
+
+            numberOfAttempts ++;
+
+            // Check if the user said the right word:
             if (resultsList.contains(textView_powerWord.getText().toString())){
+                numberCorrect ++;
                 String correct = getString(R.string.correct);
                 textToSpeech.speak(correct, TextToSpeech.QUEUE_FLUSH, null, null);
             }else{
@@ -167,6 +178,17 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
 
     @Override
     public void onStop() {
+        // Calculate the score:
+        int score = Math.round(numberCorrect * 100/numberOfAttempts);
+        String scoreString = score + "%";
+        // Get the current date/time:
+        String time = new SimpleDateFormat("MM/dd/yyyy HH:mm", Locale.US).format(new Date());
+        // Create and save new Score object:
+        Score newScore = new Score(scoreString, time);
+        ArrayList<Score> scores = FileUtil.read(getActivity());
+        scores.add(newScore);
+        FileUtil.write(getActivity(), scores);
+
         if (textToSpeech != null){
             textToSpeech.shutdown();
         }
