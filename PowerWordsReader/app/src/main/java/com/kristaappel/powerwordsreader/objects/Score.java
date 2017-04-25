@@ -9,8 +9,8 @@ import java.io.Serializable;
 
 public class Score implements Serializable{
 
-    String score;
-    String time;
+    private final String score;
+    private final String time;
 
 
     public Score(String _score, String _time){

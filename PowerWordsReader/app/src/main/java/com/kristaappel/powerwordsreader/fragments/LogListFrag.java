@@ -10,23 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-
 import com.kristaappel.powerwordsreader.R;
 import com.kristaappel.powerwordsreader.objects.FileUtil;
 import com.kristaappel.powerwordsreader.objects.Score;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 
 public class LogListFrag extends ListFragment {
 
-    ArrayList<Score> scores;
+    private ArrayList<Score> scores;
     private static final int ID_CONSTANT = 0x02020;
+
 
     public static LogListFrag newInstance(){
         return new LogListFrag();
@@ -38,13 +34,6 @@ public class LogListFrag extends ListFragment {
         super.onAttach(context);
         scores = FileUtil.read(getActivity());
         setListAdapter(new ListAdapter());
-    }
-
-
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-        // TODO - do something?
     }
 
 

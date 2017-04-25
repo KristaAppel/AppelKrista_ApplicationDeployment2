@@ -42,8 +42,8 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
     private int wordIndex = 0;
     private static final int REQUEST_CODE = 10101;
     private TextToSpeech textToSpeech;
-    int numberOfAttempts = 0;
-    int numberCorrect = 0;
+    private int numberOfAttempts = 0;
+    private int numberCorrect = 0;
 
 
     public static PowerWordFrag newInstance(String[] _powerWords){
