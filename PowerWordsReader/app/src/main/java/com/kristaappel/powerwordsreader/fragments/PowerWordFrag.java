@@ -179,15 +179,18 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
     @Override
     public void onStop() {
         // Calculate the score:
-        int score = Math.round(numberCorrect * 100/numberOfAttempts);
-        String scoreString = score + "%";
-        // Get the current date/time:
-        String time = new SimpleDateFormat("MM/dd/yyyy HH:mm", Locale.US).format(new Date());
-        // Create and save new Score object:
-        Score newScore = new Score(scoreString, time);
-        ArrayList<Score> scores = FileUtil.read(getActivity());
-        scores.add(newScore);
-        FileUtil.write(getActivity(), scores);
+        if (numberOfAttempts != 0){
+            int score = Math.round(numberCorrect * 100/numberOfAttempts);
+            String scoreString = score + "%";
+            // Get the current date/time:
+            String time = new SimpleDateFormat("MM/dd/yyyy HH:mm", Locale.US).format(new Date());
+            // Create and save new Score object:
+            Score newScore = new Score(scoreString, time);
+            ArrayList<Score> scores = FileUtil.read(getActivity());
+            scores.add(newScore);
+            FileUtil.write(getActivity(), scores);
+        }
+
 
         if (textToSpeech != null){
             textToSpeech.shutdown();
