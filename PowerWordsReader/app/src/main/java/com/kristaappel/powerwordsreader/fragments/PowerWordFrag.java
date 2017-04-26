@@ -190,7 +190,7 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
             scores.add(newScore);
             FileUtil.write(getActivity(), scores);
         }
-
+        
 
         if (textToSpeech != null){
             textToSpeech.shutdown();
