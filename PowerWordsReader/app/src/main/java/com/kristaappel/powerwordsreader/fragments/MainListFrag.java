@@ -45,6 +45,7 @@ public class MainListFrag extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
+        // Go to the Power Word screen for the appropriate level:
         Intent powerWordScreenIntent = new Intent(getActivity(), PowerWordActivity.class);
         powerWordScreenIntent.putExtra(EXTRA_IRLA_LEVEL_INDEX, position);
         startActivity(powerWordScreenIntent);
