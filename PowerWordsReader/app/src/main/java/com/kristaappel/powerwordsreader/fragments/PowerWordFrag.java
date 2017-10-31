@@ -34,7 +34,7 @@ import java.util.Locale;
 import static android.app.Activity.RESULT_OK;
 
 
-public class PowerWordFrag extends Fragment implements View.OnClickListener {
+public class PowerWordFrag extends Fragment implements View.OnClickListener, TextToSpeech.OnInitListener {
 
     private TextView textView_powerWord;
     private ImageButton micButton;
@@ -61,14 +61,7 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        textToSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int i) {
-                if (i != TextToSpeech.ERROR){
-                    textToSpeech.setLanguage(Locale.ENGLISH);
-                }
-            }
-        });
+        textToSpeech = new TextToSpeech(getActivity(), this);
     }
 
 
@@ -183,7 +176,7 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
             int score = Math.round(numberCorrect * 100/numberOfAttempts);
             String scoreString = score + "%";
             // Get the current date/time:
-            String time = new SimpleDateFormat("MM/dd/yyyy HH:mm", Locale.US).format(new Date());
+            String time = new SimpleDateFormat("MM/dd/yyyy hh:mm a", Locale.US).format(new Date());
             // Create and save new Score object:
             Score newScore = new Score(scoreString, time);
             ArrayList<Score> scores = FileUtil.read(getActivity());
@@ -199,4 +192,10 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener {
     }
 
 
+    @Override
+    public void onInit(int status) {
+        if (status != TextToSpeech.ERROR){
+            textToSpeech.setLanguage(Locale.ENGLISH);
+        }
+    }
 }
