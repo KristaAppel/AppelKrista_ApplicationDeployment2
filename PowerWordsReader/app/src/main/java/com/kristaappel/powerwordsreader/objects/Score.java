@@ -11,11 +11,13 @@ public class Score implements Serializable{
 
     private final String score;
     private final String time;
+    private final String color;
 
 
-    public Score(String _score, String _time){
+    public Score(String _score, String _time, String _color){
         this.score = _score;
         this.time = _time;
+        this.color = _color;
     }
 
 
@@ -26,6 +28,10 @@ public class Score implements Serializable{
 
     public String getTime() {
         return time;
+    }
+
+    public String getColor(){
+        return color;
     }
 
 

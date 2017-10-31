@@ -44,10 +44,12 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
     private TextToSpeech textToSpeech;
     private int numberOfAttempts = 0;
     private int numberCorrect = 0;
+    private static String color = "";
 
 
-    public static PowerWordFrag newInstance(String[] _powerWords){
+    public static PowerWordFrag newInstance(String[] _powerWords, String _color){
         powerWords = _powerWords;
+        color = _color;
         return new PowerWordFrag();
     }
 
@@ -178,7 +180,7 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
             // Get the current date/time:
             String time = new SimpleDateFormat("MM/dd/yyyy hh:mm a", Locale.US).format(new Date());
             // Create and save new Score object:
-            Score newScore = new Score(scoreString, time);
+            Score newScore = new Score(scoreString, time, color);
             ArrayList<Score> scores = FileUtil.read(getActivity());
             scores.add(newScore);
             FileUtil.write(getActivity(), scores);

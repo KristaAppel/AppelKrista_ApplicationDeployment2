@@ -15,6 +15,7 @@ import com.kristaappel.powerwordsreader.fragments.PowerWordFrag;
 public class PowerWordActivity extends AppCompatActivity {
 
     private String[] powerWords;
+    private String color = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,31 +38,37 @@ public class PowerWordActivity extends AppCompatActivity {
             case 0:
                 view.setBackgroundResource(R.color.myGreen);
                 powerWords = getResources().getStringArray(R.array.power_words_1g);
+                color = "green";
                 break;
             case 1:
                 view.setBackgroundResource(R.color.myGreen);
                 powerWords = getResources().getStringArray(R.array.power_words_2g);
+                color="green";
                 break;
             case 2:
-                view.setBackgroundResource(R.color.myBlue);powerWords = getResources().getStringArray(R.array.power_words_2g);
+                view.setBackgroundResource(R.color.myBlue);
                 powerWords = getResources().getStringArray(R.array.power_words_1b);
+                color="blue";
                 break;
             case 3:
-                view.setBackgroundResource(R.color.myBlue);powerWords = getResources().getStringArray(R.array.power_words_2g);
+                view.setBackgroundResource(R.color.myBlue);
                 powerWords = getResources().getStringArray(R.array.power_words_2b);
+                color="blue";
                 break;
             case 4:
                 view.setBackgroundResource(R.color.myRed);
                 powerWords = getResources().getStringArray(R.array.power_words_1r);
+                color = "red";
                 break;
             case 5:
                 view.setBackgroundResource(R.color.myRed);
                 powerWords = getResources().getStringArray(R.array.power_words_2r);
+                color="red";
                 break;
         }
 
         // Create and display a PowerWordFrag:
-        PowerWordFrag powerWordFrag = PowerWordFrag.newInstance(powerWords);
+        PowerWordFrag powerWordFrag = PowerWordFrag.newInstance(powerWords, color);
         getFragmentManager().beginTransaction().replace(R.id.power_word_frame, powerWordFrag).commit();
 
     }

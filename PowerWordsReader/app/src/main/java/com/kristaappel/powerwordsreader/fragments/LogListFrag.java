@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.kristaappel.powerwordsreader.R;
 import com.kristaappel.powerwordsreader.objects.FileUtil;
@@ -62,10 +63,22 @@ public class LogListFrag extends ListFragment {
 
             TextView textDate = (TextView) convertView.findViewById(R.id.textView_log_date);
             TextView textAccuracy = (TextView) convertView.findViewById(R.id.textView_log_accuracy);
+            ImageView levelColorSquare = (ImageView) convertView.findViewById(R.id.imageView_log_color);
 
             // Display the dates and scores in reverse for chronological order:
             textDate.setText(scores.get(getCount() -1 - position).getTime());
             textAccuracy.setText(scores.get(getCount() -1 - position).getScore());
+
+            // Display the level color:
+            String color = scores.get(getCount() -1 - position).getColor();
+            if (color.equals("green")){
+                levelColorSquare.setBackgroundResource(R.color.myGreen);
+            }else if (color.equals("blue")){
+                levelColorSquare.setBackgroundResource(R.color.myBlue);
+            }else if (color.equals("red")){
+                levelColorSquare.setBackgroundResource(R.color.myRed);
+            }
+
 
             return convertView;
         }
