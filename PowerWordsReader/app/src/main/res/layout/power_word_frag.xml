@@ -60,4 +60,12 @@
         android:backgroundTint="@color/myBlue"
         app:srcCompat="@mipmap/ic_mic_white_24dp"
         android:contentDescription="@string/microphone_button" />
+
+    <TextView
+        android:id="@+id/textView_power_word_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/previousButton"
+        android:text="TextView" />
 </RelativeLayout>

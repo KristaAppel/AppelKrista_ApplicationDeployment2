@@ -32,11 +32,15 @@ import java.util.List;
 import java.util.Locale;
 
 import static android.app.Activity.RESULT_OK;
+import static com.kristaappel.powerwordsreader.R.id.nextButton;
+import static com.kristaappel.powerwordsreader.R.id.textView;
+import static com.kristaappel.powerwordsreader.R.id.textView_power_word_progress;
 
 
 public class PowerWordFrag extends Fragment implements View.OnClickListener, TextToSpeech.OnInitListener {
 
     private TextView textView_powerWord;
+    private TextView textView_powerWordProgress;
     private ImageButton micButton;
     private static String[] powerWords;
     private int wordIndex = 0;
@@ -75,6 +79,9 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
             textView_powerWord = (TextView) getView().findViewById(R.id.textView_power_word);
             textView_powerWord.setText(powerWords[wordIndex]);
 
+            textView_powerWordProgress = (TextView) getView().findViewById(R.id.textView_power_word_progress);
+            showProgress();
+
             ImageButton nextButton = (ImageButton) getView().findViewById(R.id.nextButton);
             nextButton.setOnClickListener(this);
 
@@ -92,11 +99,16 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
 
     }
 
+    private void showProgress(){
+        String progressString = wordIndex+1 + "/" + powerWords.length;
+        textView_powerWordProgress.setText(progressString);
+    }
+
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.nextButton:
+            case nextButton:
                 // Show the next Power Word in the collection:
                 if (wordIndex < powerWords.length-1){
                     wordIndex ++;
@@ -105,6 +117,7 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
                     wordIndex = 0;
                     textView_powerWord.setText(powerWords[wordIndex]);
                 }
+                showProgress();
                 break;
 
             case R.id.previousButton:
@@ -116,6 +129,7 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
                     wordIndex = powerWords.length-1;
                     textView_powerWord.setText(powerWords[wordIndex]);
                 }
+                showProgress();
                 break;
 
             case R.id.helpButton:
