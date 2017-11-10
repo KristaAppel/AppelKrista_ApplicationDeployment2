@@ -16,6 +16,7 @@ public class PowerWordActivity extends AppCompatActivity {
 
     private String[] powerWords;
     private String color = "";
+    private String level = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,37 +39,43 @@ public class PowerWordActivity extends AppCompatActivity {
             case 0:
                 view.setBackgroundResource(R.color.myGreen);
                 powerWords = getResources().getStringArray(R.array.power_words_1g);
+                level = "1G";
                 color = "green";
                 break;
             case 1:
                 view.setBackgroundResource(R.color.myGreen);
                 powerWords = getResources().getStringArray(R.array.power_words_2g);
+                level = "2G";
                 color="green";
                 break;
             case 2:
                 view.setBackgroundResource(R.color.myBlue);
                 powerWords = getResources().getStringArray(R.array.power_words_1b);
+                level = "1B";
                 color="blue";
                 break;
             case 3:
                 view.setBackgroundResource(R.color.myBlue);
                 powerWords = getResources().getStringArray(R.array.power_words_2b);
+                level = "2B";
                 color="blue";
                 break;
             case 4:
                 view.setBackgroundResource(R.color.myRed);
                 powerWords = getResources().getStringArray(R.array.power_words_1r);
+                level = "1R";
                 color = "red";
                 break;
             case 5:
                 view.setBackgroundResource(R.color.myRed);
                 powerWords = getResources().getStringArray(R.array.power_words_2r);
+                level = "2R";
                 color="red";
                 break;
         }
 
         // Create and display a PowerWordFrag:
-        PowerWordFrag powerWordFrag = PowerWordFrag.newInstance(powerWords, color);
+        PowerWordFrag powerWordFrag = PowerWordFrag.newInstance(powerWords, color, level);
         getFragmentManager().beginTransaction().replace(R.id.power_word_frame, powerWordFrag).commit();
 
     }

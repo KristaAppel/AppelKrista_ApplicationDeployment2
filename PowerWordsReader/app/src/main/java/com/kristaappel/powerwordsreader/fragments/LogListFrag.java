@@ -63,11 +63,12 @@ public class LogListFrag extends ListFragment {
 
             TextView textDate = (TextView) convertView.findViewById(R.id.textView_log_date);
             TextView textAccuracy = (TextView) convertView.findViewById(R.id.textView_log_accuracy);
-            ImageView levelColorSquare = (ImageView) convertView.findViewById(R.id.imageView_log_color);
+            TextView levelColorSquare = (TextView) convertView.findViewById(R.id.textView_log_color);
 
             // Display the dates and scores in reverse for chronological order:
             textDate.setText(scores.get(getCount() -1 - position).getTime());
-            textAccuracy.setText(scores.get(getCount() -1 - position).getScore());
+            levelColorSquare.setText(scores.get(getCount() -1 -position).getLevel());
+            textAccuracy.setText(scores.get(getCount() -1 - position).getScore() + "\n" + scores.get(getCount() -1 -position).getScoreNumbers());
 
             // Display the level color:
             String color = scores.get(getCount() -1 - position).getColor();

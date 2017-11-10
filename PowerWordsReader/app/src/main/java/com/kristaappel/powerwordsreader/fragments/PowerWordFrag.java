@@ -49,11 +49,13 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
     private int numberOfAttempts = 0;
     private int numberCorrect = 0;
     private static String color = "";
+    private static String level = "";
 
 
-    public static PowerWordFrag newInstance(String[] _powerWords, String _color){
+    public static PowerWordFrag newInstance(String[] _powerWords, String _color, String _level){
         powerWords = _powerWords;
         color = _color;
+        level = _level;
         return new PowerWordFrag();
     }
 
@@ -77,7 +79,7 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
         super.onResume();
         try{
             textView_powerWord = (TextView) getView().findViewById(R.id.textView_power_word);
-            textView_powerWord.setText(powerWords[wordIndex]);
+            showWord();
 
             textView_powerWordProgress = (TextView) getView().findViewById(R.id.textView_power_word_progress);
             showProgress();
@@ -104,6 +106,10 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
         textView_powerWordProgress.setText(progressString);
     }
 
+    private void showWord(){
+        textView_powerWord.setText(powerWords[wordIndex]);
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -112,11 +118,10 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
                 // Show the next Power Word in the collection:
                 if (wordIndex < powerWords.length-1){
                     wordIndex ++;
-                    textView_powerWord.setText(powerWords[wordIndex]);
                 }else{
                     wordIndex = 0;
-                    textView_powerWord.setText(powerWords[wordIndex]);
                 }
+                showWord();
                 showProgress();
                 break;
 
@@ -124,11 +129,10 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
                 // Show the previous Power Word in the collection:
                 if (wordIndex > 0){
                     wordIndex --;
-                    textView_powerWord.setText(powerWords[wordIndex]);
                 }else{
                     wordIndex = powerWords.length-1;
-                    textView_powerWord.setText(powerWords[wordIndex]);
                 }
+                showWord();
                 showProgress();
                 break;
 
@@ -191,10 +195,11 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
         if (numberOfAttempts != 0){
             int score = Math.round(numberCorrect * 100/numberOfAttempts);
             String scoreString = score + "%";
+            String scoreNumbersString = numberCorrect + "/" + numberOfAttempts;
             // Get the current date/time:
-            String time = new SimpleDateFormat("MM/dd/yyyy hh:mm a", Locale.US).format(new Date());
+            String time = new SimpleDateFormat("MM/dd/yyyy \nhh:mm a", Locale.US).format(new Date());
             // Create and save new Score object:
-            Score newScore = new Score(scoreString, time, color);
+            Score newScore = new Score(scoreString, scoreNumbersString, time, color, level);
             ArrayList<Score> scores = FileUtil.read(getActivity());
             scores.add(newScore);
             FileUtil.write(getActivity(), scores);
