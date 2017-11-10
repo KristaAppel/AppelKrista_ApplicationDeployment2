@@ -9,13 +9,14 @@
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
         android:background="@android:color/holo_blue_light"
         android:gravity="center_vertical"
         android:paddingBottom="2dp"
         android:paddingEnd="2dp"
         android:paddingStart="2dp"
         android:paddingTop="2dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
@@ -24,10 +25,12 @@
     android:id="@+id/textView_log_date"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textAlignment="textStart"
+
     android:layout_marginStart="14dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
     android:textSize="18sp"
-    android:layout_marginTop="16dp" android:layout_toEndOf="@+id/textView_log_color"
+        android:layout_toEndOf="@+id/textView_log_color"
         android:gravity="center_vertical"
     android:layout_alignParentTop="true"
      />
@@ -40,8 +43,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignTop="@+id/textView_log_date"
         android:layout_marginEnd="14dp"
-        android:layout_marginTop="16dp"
-        android:textAlignment="textEnd"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        
         android:gravity="center_vertical"
         android:textSize="18sp" />
 </RelativeLayout>
