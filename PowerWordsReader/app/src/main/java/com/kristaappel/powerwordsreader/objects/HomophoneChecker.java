@@ -232,6 +232,9 @@ public class HomophoneChecker {
             case "way":
                 resultsList.add("weigh");
                 break;
+            case "com":
+                resultsList.add("calm");
+                break;
         }
         return resultsList;
     }
