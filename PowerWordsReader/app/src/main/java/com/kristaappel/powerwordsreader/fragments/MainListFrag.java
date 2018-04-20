@@ -92,6 +92,9 @@ public class MainListFrag extends ListFragment {
                 case 4:case 5:
                     textAbbrev.setBackgroundResource(R.color.myRed);
                     break;
+                case 6:
+                    textAbbrev.setBackgroundResource(R.color.myWhite);
+                    break;
             }
 
             // Set text:

@@ -21,6 +21,7 @@
         <item>2B Power Words</item>
         <item>1R Power Words</item>
         <item>2R Power Words</item>
+        <item>Wt Power Words</item>
     </string-array>
 
     <string-array name="irla_levels_abbrev">
@@ -30,6 +31,7 @@
         <item>2B</item>
         <item>1R</item>
         <item>2R</item>
+        <item>Wt</item>
     </string-array>
 
     <string-array name="power_words_1g">
@@ -440,5 +442,69 @@
         <item>worry</item>
         <item>worse</item>
     </string-array>
+
+    <string-array name="power_words_wt">
+        <item>although</item>
+        <item>anxious</item>
+        <item>avenue</item>
+        <item>blond</item>
+        <item>bruise</item>
+        <item>bury</item>
+        <item>calves</item>
+        <item>cereal</item>
+        <item>character</item>
+        <item>chosen</item>
+        <item>cocoa</item>
+        <item>collar</item>
+        <item>college</item>
+        <item>cough</item>
+        <item>couple</item>
+        <item>court</item>
+        <item>coyote</item>
+        <item>crayon</item>
+        <item>crooked</item>
+        <item>cruel</item>
+        <item>cozy</item>
+        <item>cupboard</item>
+        <item>death</item>
+        <item>design</item>
+        <item>disease</item>
+        <item>doubt</item>
+        <item>especially</item>
+        <item>fasten</item>
+        <item>gradually</item>
+        <item>guest</item>
+        <item>guitar</item>
+        <item>health</item>
+        <item>hoarse</item>
+        <item>honesty</item>
+        <item>jealous</item>
+        <item>journey</item>
+        <item>knowledge</item>
+        <item>language</item>
+        <item>league</item>
+        <item>leather</item>
+        <item>meadow</item>
+        <item>mustache</item>
+        <item>myth</item>
+        <item>natural</item>
+        <item>nuissance</item>
+        <item>ought</item>
+        <item>patience</item>
+        <item>persuade</item>
+        <item>pigeon</item>
+        <item>poison</item>
+        <item>restaurant</item>
+        <item>route</item>
+        <item>salad</item>
+        <item>sew</item>
+        <item>shawl</item>
+        <item>statue</item>
+        <item>strength</item>
+        <item>suggest</item>
+        <item>sword</item>
+        <item>wand</item>
+    </string-array>
+
 
 </resources>

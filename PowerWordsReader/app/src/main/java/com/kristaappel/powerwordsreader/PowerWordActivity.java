@@ -72,6 +72,12 @@ public class PowerWordActivity extends AppCompatActivity {
                 level = "2R";
                 color="red";
                 break;
+            case 6:
+                view.setBackgroundResource(R.color.myWhite);
+                powerWords = getResources().getStringArray(R.array.power_words_wt);
+                level = "Wt";
+                color="white";
+                break;
         }
 
         // Create and display a PowerWordFrag:

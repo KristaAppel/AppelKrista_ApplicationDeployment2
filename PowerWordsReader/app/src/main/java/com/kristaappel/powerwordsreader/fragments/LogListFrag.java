@@ -78,6 +78,8 @@ public class LogListFrag extends ListFragment {
                 levelColorSquare.setBackgroundResource(R.color.myBlue);
             }else if (color.equals("red")){
                 levelColorSquare.setBackgroundResource(R.color.myRed);
+            }else if (color.equals("white")){
+                levelColorSquare.setBackgroundResource(R.color.myWhite);
             }
 
 

@@ -235,6 +235,33 @@ public class HomophoneChecker {
             case "com":
                 resultsList.add("calm");
                 break;
+            case "Barry":
+                resultsList.add("bury");
+                break;
+            case "blonde":
+                resultsList.add("blond");
+                break;
+            case "serial":
+                resultsList.add("cereal");
+                break;
+            case "caller":
+                resultsList.add("collar");
+                break;
+            case "guessed":
+                resultsList.add("guest");
+                break;
+            case "horse":
+                resultsList.add("hoarse");
+                break;
+            case "patients":
+                resultsList.add("patience");
+                break;
+            case "root":
+                resultsList.add("route");
+                break;
+            case "so":
+                resultsList.add("sew");
+                break;
         }
         return resultsList;
     }
