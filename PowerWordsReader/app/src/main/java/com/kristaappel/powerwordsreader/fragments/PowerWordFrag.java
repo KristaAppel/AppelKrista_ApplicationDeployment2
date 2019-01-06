@@ -77,6 +77,7 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
     @Override
     public void onResume() {
         super.onResume();
+        textToSpeech = new TextToSpeech(getActivity(), this);
         try{
             textView_powerWord = (TextView) getView().findViewById(R.id.textView_power_word);
             showWord();
@@ -179,9 +180,11 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
                 numberCorrect ++;
                 String correct = getString(R.string.correct);
                 textToSpeech.speak(correct, TextToSpeech.QUEUE_FLUSH, null, null);
+                Log.i("PowerWordFrag", "CORRECT");
             }else{
                 String incorrect = getString(R.string.try_again);
                 textToSpeech.speak(incorrect, TextToSpeech.QUEUE_FLUSH, null, null);
+                Log.i("PowerWordFrag", "TRY AGAIN");
             }
         }
 

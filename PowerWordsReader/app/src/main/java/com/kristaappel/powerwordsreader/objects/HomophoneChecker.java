@@ -269,6 +269,39 @@ public class HomophoneChecker {
             case "Bruce":
                 resultsList.add("bruise");
                 break;
+            case "Avenue":
+                resultsList.add("avenue");
+                break;
+            case "Cavs":
+                resultsList.add("calves");
+                break;
+            case "Coco":
+                resultsList.add("cocoa");
+                break;
+            case "College":
+                resultsList.add("college");
+                break;
+            case "Court": case "quart":
+                resultsList.add("court");
+                break;
+            case "Journey":
+                resultsList.add("journey");
+                break;
+            case "League":
+                resultsList.add("league");
+                break;
+            case "Meadow":
+                resultsList.add("meadow");
+                break;
+            case "meth":
+                resultsList.add("myth");
+                break;
+            case "Dimond":
+                resultsList.add("diamond");
+                break;
+            case "worried":
+                resultsList.add("worry");
+                break;
         }
         return resultsList;
     }
