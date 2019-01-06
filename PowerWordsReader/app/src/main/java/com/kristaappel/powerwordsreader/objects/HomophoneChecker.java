@@ -262,6 +262,13 @@ public class HomophoneChecker {
             case "so":
                 resultsList.add("sew");
                 break;
+            case "AR":
+                resultsList.add("are");
+                resultsList.add("our");
+                break;
+            case "Bruce":
+                resultsList.add("bruise");
+                break;
         }
         return resultsList;
     }
