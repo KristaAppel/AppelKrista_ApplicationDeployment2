@@ -302,6 +302,17 @@ public class HomophoneChecker {
             case "worried":
                 resultsList.add("worry");
                 break;
+            case "I am":
+                resultsList.add("am");
+                break;
+            case "&":
+                resultsList.add("and");
+                break;
+            case "2":
+                resultsList.add("to");
+                resultsList.add("two");
+                resultsList.add("too");
+                break;
         }
         return resultsList;
     }

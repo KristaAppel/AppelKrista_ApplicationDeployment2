@@ -77,7 +77,10 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
     @Override
     public void onResume() {
         super.onResume();
-        textToSpeech = new TextToSpeech(getActivity(), this);
+        if (textToSpeech == null){
+            textToSpeech = new TextToSpeech(getActivity(), this);
+        }
+        
         try{
             textView_powerWord = (TextView) getView().findViewById(R.id.textView_power_word);
             showWord();
@@ -215,6 +218,29 @@ public class PowerWordFrag extends Fragment implements View.OnClickListener, Tex
         super.onStop();
     }
 
+    @Override
+    public void onDestroy() {
+        // Calculate the score:
+        if (numberOfAttempts != 0){
+            int score = Math.round(numberCorrect * 100/numberOfAttempts);
+            String scoreString = score + "%";
+            String scoreNumbersString = numberCorrect + "/" + numberOfAttempts;
+            // Get the current date/time:
+            String time = new SimpleDateFormat("MM/dd/yyyy \nhh:mm a", Locale.US).format(new Date());
+            // Create and save new Score object:
+            Score newScore = new Score(scoreString, scoreNumbersString, time, color, level);
+            ArrayList<Score> scores = FileUtil.read(getActivity());
+            scores.add(newScore);
+            FileUtil.write(getActivity(), scores);
+        }
+
+
+        if (textToSpeech != null){
+            textToSpeech.shutdown();
+        }
+
+        super.onDestroy();
+    }
 
     @Override
     public void onInit(int status) {
