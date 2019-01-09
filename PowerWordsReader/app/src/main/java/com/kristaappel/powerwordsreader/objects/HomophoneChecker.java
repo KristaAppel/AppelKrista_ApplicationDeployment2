@@ -313,6 +313,9 @@ public class HomophoneChecker {
                 resultsList.add("two");
                 resultsList.add("too");
                 break;
+            case "War":
+                resultsList.add("were");
+                break;
         }
         return resultsList;
     }
